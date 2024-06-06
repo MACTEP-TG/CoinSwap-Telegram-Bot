@@ -9,9 +9,7 @@ export const adminCommand = new Composer()
 adminCommand.command("admin", async (ctx) => {
     const role = getUserRole(ctx)
 
-    if(role === "admin") {
+    if(role === "admin" || role === "owner") {
         await sendExchangeRateAdmin(ctx, adminKeyboard)
-    } else if (role === "owner") {
-        await sendExchangeRateAdmin(ctx, ownerKeyboard)
     }
 })
