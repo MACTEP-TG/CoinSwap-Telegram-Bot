@@ -13,6 +13,7 @@ import {convers} from "./conversations/index.js";
 import {callbackQueries} from "./callbackQueries/index.js";
 import cron from "node-cron";
 import {getExchangeRate} from "./utils/getExchangeRate.js";
+import {LastChannelRateMessage} from "./models/lastChannelRateMessage.js";
 
 
 dotenv.config()
@@ -105,17 +106,19 @@ bot.catch((err) => {
     }
 })
 
-let previousMessageId = null
-
-cron.schedule('*/10 * * * *', async () => {
+//*/10
+cron.schedule('*/1 * * * *', async () => {
     console.log("channel rate update")
 
-    if(previousMessageId !== null) await bot.api.deleteMessage(TG_CHANNEL_ID, previousMessageId)
-
+    const lastChannelRateMessageId = (await LastChannelRateMessage.find())[0].messageId
+    console.log(lastChannelRateMessageId)
+    if(lastChannelRateMessageId !== null) await bot.api.deleteMessage(TG_CHANNEL_ID, lastChannelRateMessageId)
+    console.log("channel rate update 2")
     const [rateMessage, rateMessageOptions] = await getExchangeRate()
 
     const message = await bot.api.sendMessage(TG_CHANNEL_ID, rateMessage, rateMessageOptions)
-    previousMessageId = message.message_id
+    await LastChannelRateMessage.create({messageId: message.message_id})
+    console.log("channel rate update 3")
 })
 
 await bot.start(async () => {})
