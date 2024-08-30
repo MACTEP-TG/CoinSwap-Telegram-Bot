@@ -36,16 +36,16 @@ export const getExchangeRate = async () => {
 
     return ([
         `🏙️ <b>Москва</b> - CoinSwap\n` +
-        ` <b>├</b> К - <code>${moscowBuy}</code> ₽  <b>❘</b>  <code>${moscowSecondBuy}</code> ₽\n` +
-        ` <b>└</b> П - <code>${moscowSell}</code> ₽\n` +
+        ` <b>├</b> Купить - <code>${moscowBuy}</code> ₽  <b>❘</b>  <code>${moscowSecondBuy}</code> ₽\n` +
+        ` <b>└</b> Продать - <code>${moscowSell}</code> ₽\n` +
         `\n` +
         `🌄 <b>Махачкала</b> - CoinSwap\n` +
-        ` <b>├</b> К - <code>${makhachkalaBuy}</code> ₽  <b>❘</b>  <code>${makhachkalaSecondBuy}</code> ₽\n` +
-        ` <b>└</b> П - <code>${makhachkalaSell}</code> ₽\n` +
+        ` <b>├</b> Купить - <code>${makhachkalaBuy}</code> ₽  <b>❘</b>  <code>${makhachkalaSecondBuy}</code> ₽\n` +
+        ` <b>└</b> Продать - <code>${makhachkalaSell}</code> ₽\n` +
         ` \n` +
         `💵 <b>USD$ / USD₮</b>\n` +
-        ` <b>├</b> К - <code>${usdUsdtPercBuy}</code> %\n` +
-        ` <b>└</b> П - <code>${usdUsdtPercSell}</code> %\n` +
+        ` <b>├</b> Купить - <code>${usdUsdtPercBuy}</code> %\n` +
+        ` <b>└</b> Продать - <code>${usdUsdtPercSell}</code> %\n` +
         ` \n` +
         `🇷🇺 <b>Рег-ны РФ:</b> <code>${regionsBuy}</code> ₽  /  <code>${regionsSecondBuy}</code> ₽\n` +
         `-----------------------------------\n` +

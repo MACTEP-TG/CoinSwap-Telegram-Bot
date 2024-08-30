@@ -3,7 +3,7 @@ import {Direction} from "../models/direction.js";
 import {formatBigNumber} from "./formatBigNumber.js";
 import {getUsdtUsdFactor} from "./getUsdtUsdFactor.js";
 
-export const sendExchangeRateAdmin = async (ctx, keyboard) => {
+export const sendShortExchangeRateAdmin = async (ctx, keyboard) => {
     const loader = await ctx.reply("🔄 Обновление данных...")
 
 
@@ -61,8 +61,6 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
         `🌄 <b>Махачкала</b> - CoinSwap\n` +
         ` <b>├</b> Купить - <code>${makhachkalaBuy}</code> ₽  <b>❘</b>  <code>${makhachkalaSecondBuy}</code> ₽\n` +
         ` <b>└</b> Продать - <code>${makhachkalaSell}</code> ₽\n` +
-        ` \n` +
-        `🇷🇺 <b>Рег-ны РФ:</b> <code>${regionsBuy}</code> ₽  /  <code>${regionsSecondBuy}</code> ₽\n` +
         `-----------------------------------\n` +
         `🟢 <a href="https://garantex.org/trading/usdtrub">Garantex</a> - <code>${garantex}</code> ₽ (на 100к$)\n` +
         ` <b>├</b> Купить - <code>${garantexSell}</code> ₽\n` +
@@ -72,37 +70,12 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
         ` <b>├</b> Купить - <code>${usdUsdtPercBuy}</code> %\n` +
         ` <b>└</b> Продать - <code>${usdUsdtPercSell}</code> %\n` +
         `-----------------------------------\n` +
-        `<b>Выдача валюты в других странах:</b>\n` +
-        ` \n` +
-        `🇺🇳 <b>Страны «СНГ»</b>\n` +
-        ` <b>└</b> 1 $ = <code>${CISBuy}</code> ₽  /  <code>${CISSecondBuy}</code> ₽\n` +
-        ` \n` +
-        `🇪🇺 <b>Страны «EC»</b>\n` +
-        ` <b>└</b> 1 € = <code>${EUBuy}</code> ₽ \n` +
-        ` \n` +
-        `🇺🇸 <b>США</b>\n` +
-        ` <b>└</b> 1 $ = <code>${USABuy}</code> ₽ \n` +
-        ` \n` +
-        `🇦🇪 <b>ОАЭ «Дубай»</b>\n` +
-        ` <b>└</b> 1 AED = <code>${UAE}</code> ₽ \n` +
-        ` \n` +
-        `🇨🇳 <b>Китай</b>\n` +
-        ` <b>└</b> 1 ¥ = <code>${china}</code> ₽ \n` +
-        ` \n` +
-        `🇰🇷 <b>Юж. Корея</b>\n` +
-        ` <b>└</b> 1 ₽ = <code>${korea}</code> ₩ \n` +
-        `-----------------------------------\n` +
         `📈 <a href="https://www.profinance.ru/charts/usdrub/lc47">FOREX</a>\n` +
         ` └ <code>${forex}</code> ₽\n` +
         ` \n` +
         `🏦 <a href="https://www.cbr.ru/">ЦБ РФ</a>\n` +
         ` └ <code>${CB}</code> ₽\n` +
-        `-----------------------------------\n` +
-        `🟠 <b><a href="https://ru.tradingview.com/symbols/BTCUSD/">BTC</a></b>\n` +
-        ` <b>└</b> $${bitcoinUsdt} ⇋ <code>${bitcoinRub}</code> ₽\n` +
-        ` \n` +
-        `🔵 <b><a href="https://ru.tradingview.com/symbols/ETHUSD/">ETH</a></b>\n` +
-        ` <b>└</b> $${ethereumUsdt} ⇋ <code>${ethereumRub}</code> ₽\n`
+        `-----------------------------------\n`
         ,
         {
             reply_markup: keyboard,
