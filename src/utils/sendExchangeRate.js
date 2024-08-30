@@ -81,7 +81,7 @@ export const sendExchangeRate = async (ctx) => {
         `🔵 <b>ETH</b> \n` +
         ` <b>└</b> $${ethereumUsdt} ⇋ <code>${ethereumRub}</code> ₽\n` +
         ` \n` +
-        `По вопросам: 👉 <a href="https://t.me/m/IZUtuEa_Njhi">НАЖМИ</a>`
+        `По вопросам: 👉 <a href="https://t.me/m/AZhPjo7mYTdi">НАЖМИ</a>`
     ,
         {
             reply_markup: updateKeyboard,
