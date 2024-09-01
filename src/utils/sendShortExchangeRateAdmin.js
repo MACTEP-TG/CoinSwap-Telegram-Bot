@@ -1,11 +1,8 @@
 import {getPrice} from "../bot.js";
 import {Direction} from "../models/direction.js";
-import {formatBigNumber} from "./formatBigNumber.js";
-import {getUsdtUsdFactor} from "./getUsdtUsdFactor.js";
 
 export const sendShortExchangeRateAdmin = async (ctx, keyboard) => {
     const loader = await ctx.reply("🔄 Обновление данных...")
-
 
     const moscowBuy = await getPrice.buy("Moscow");
     const moscowSecondBuy = await getPrice.secondBuy("Moscow")
@@ -74,8 +71,7 @@ export const sendShortExchangeRateAdmin = async (ctx, keyboard) => {
         ` └ <code>${forex}</code> ₽\n` +
         ` \n` +
         `🏦 <a href="https://www.cbr.ru/">ЦБ РФ</a>\n` +
-        ` └ <code>${CB}</code> ₽\n` +
-        `-----------------------------------\n`
+        ` └ <code>${CB}</code> ₽\n`
         ,
         {
             reply_markup: keyboard,

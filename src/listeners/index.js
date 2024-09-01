@@ -4,6 +4,7 @@ import {updateAdminHear} from "./updateAdminHear.js";
 import {makeUserHear} from "./makeUserHear.js";
 import {makeAdminHear} from "./makeAdminHear.js";
 import {changeMarginHear} from "./changeMarginHear.js";
+import {updateShortAdminHear} from "./makeShortAdminHear.js";
 
 export const listeners = new Composer()
 
@@ -12,3 +13,4 @@ listeners.use(updateAdminHear)
 listeners.use(makeAdminHear)
 listeners.use(makeUserHear)
 listeners.use(changeMarginHear)
+listeners.use(updateShortAdminHear)
