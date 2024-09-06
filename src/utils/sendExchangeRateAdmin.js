@@ -92,7 +92,7 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
         `🇰🇷 <b>Юж. Корея</b>\n` +
         ` <b>└</b> 1 ₽ = <code>${korea}</code> ₩ \n` +
         `-----------------------------------\n` +
-        `📈 <a href="https://www.profinance.ru/charts/usdrub/lc47">FOREX</a>\n` +
+        `📈 <a href="https://www.profinance.ru/charts/usdrub/lc47">ProFinance</a>\n` +
         ` └ <code>${forex}</code> ₽\n` +
         ` \n` +
         `🏦 <a href="https://www.cbr.ru/">ЦБ РФ</a>\n` +

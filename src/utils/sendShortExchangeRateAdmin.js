@@ -67,7 +67,7 @@ export const sendShortExchangeRateAdmin = async (ctx, keyboard) => {
         ` <b>├</b> Купить - <code>${usdUsdtPercBuy}</code> %\n` +
         ` <b>└</b> Продать - <code>${usdUsdtPercSell}</code> %\n` +
         `-----------------------------------\n` +
-        `📈 <a href="https://www.profinance.ru/charts/usdrub/lc47">FOREX</a>\n` +
+        `📈 <a href="https://www.profinance.ru/charts/usdrub/lc47">ProFinance</a>\n` +
         ` └ <code>${forex}</code> ₽\n` +
         ` \n` +
         `🏦 <a href="https://www.cbr.ru/">ЦБ РФ</a>\n` +

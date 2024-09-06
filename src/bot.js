@@ -106,22 +106,23 @@ bot.catch((err) => {
     }
 })
 
-cron.schedule('*/10 * * * *', async () => {
+cron.schedule('*/1 * * * *', async () => {
     console.log("channel rate update")
+    const [rateMessage, rateMessageOptions] = await getExchangeRate()
+    const message = await bot.api.sendMessage(TG_CHANNEL_ID, rateMessage, rateMessageOptions)
+    await LastChannelRateMessage.create({messageId: message.message_id})
 
     let lastChannelRateMessageId = null
 
-    let lastChannelRateMessage = (await LastChannelRateMessage.find())[0]
+    const allMessages = await LastChannelRateMessage.find()
+
+    let lastChannelRateMessage = (allMessages)[allMessages.length - 1]
 
     if(lastChannelRateMessage !== undefined) {
-        lastChannelRateMessageId = lastChannelRateMessage.messageId
+        lastChannelRateMessageId = lastChannelRateMessage.messageId - 1
     }
 
     if(lastChannelRateMessageId !== null) await bot.api.deleteMessage(TG_CHANNEL_ID, lastChannelRateMessageId)
-    const [rateMessage, rateMessageOptions] = await getExchangeRate()
-
-    const message = await bot.api.sendMessage(TG_CHANNEL_ID, rateMessage, rateMessageOptions)
-    await LastChannelRateMessage.create({messageId: message.message_id})
 })
 
 await bot.start(async () => {})
