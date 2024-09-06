@@ -48,6 +48,8 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
 
     const CB = Number(getPrice.usdToRubCB).toFixed(2)
     const forex = Number(getPrice.usdToRub).toFixed(2)
+    const investing = Number(getPrice.investing).toFixed(2)
+
 
     const usdUsdtFactor = getPrice.usdUsdtFactor
     const usdUsdtPercBuy = (await getPrice.usdUsdtFactorBuy()).toFixed(1)
@@ -94,6 +96,9 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
         `-----------------------------------\n` +
         `📈 <a href="https://www.profinance.ru/charts/usdrub/lc47">ProFinance</a>\n` +
         ` └ <code>${forex}</code> ₽\n` +
+        ` \n` +
+        `📊 <a href="https://www.investing.com/currencies/usd-rub">Investing</a> \n` +
+        ` └ <code>${investing}</code> ₽\n` +
         ` \n` +
         `🏦 <a href="https://www.cbr.ru/">ЦБ РФ</a>\n` +
         ` └ <code>${CB}</code> ₽\n` +
