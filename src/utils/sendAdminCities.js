@@ -22,7 +22,8 @@ export const sendAdminCities = async (ctx, keyboard) => {
         ` <b>├</b> Купить - <code>${makhachkalaBuy}</code> ₽\n` +
         ` <b>└</b> Продать - <code>${makhachkalaSell}</code> ₽\n` +
         ` \n` +
-        `🇷🇺 <b>Рег-ны РФ:</b> <code>${regionsBuy}</code> ₽  /  <code>${regionsSecondBuy}</code> ₽\n`
+        `🇷🇺 <b>Рег-ны РФ:</b>\n` +
+        ` <b>└</b> <code>${regionsBuy}</code> ₽  /  <code>${regionsSecondBuy}</code> ₽\n`
         ,
         {
             reply_markup: keyboard,
