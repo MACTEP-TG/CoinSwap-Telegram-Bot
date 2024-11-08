@@ -46,7 +46,8 @@ export const getExchangeRate = async () => {
         ` <b>├</b> Купить - <code>${usdUsdtPercBuy}</code> %\n` +
         ` <b>└</b> Продать - <code>${usdUsdtPercSell}</code> %\n` +
         ` \n` +
-        `🇷🇺 <b>Рег-ны РФ:</b> <code>${regionsBuy}</code> ₽  <b>/</b> <code>${regionsSecondBuy}</code> ₽\n` +
+        `🇷🇺 <b>Рег-ны РФ</b>\n` +
+        ` <b>└</b> <code>${regionsBuy}</code> ₽  <b>/</b> <code>${regionsSecondBuy}</code> ₽\n` +
         ` \n` +
         `По вопросам: 👉 <a href="${link.link}">НАЖМИ</a>`
         ,

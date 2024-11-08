@@ -9,6 +9,12 @@ editCommand.command("edit", async (ctx) => {
     const role = getUserRole(ctx)
 
     if(role === "owner") {
-        await sendExchangeRateAdmin(ctx, ownerKeyboard)
+        await ctx.reply('⚠️ Главная панель', {
+            reply_markup: ownerKeyboard,
+            parse_mode: "HTML",
+            link_preview_options: {
+                is_disabled: true
+            }
+        })
     }
 })
