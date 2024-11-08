@@ -3,9 +3,9 @@ import {getPrice} from "../bot.js";
 export const sendAdminCountries = async (ctx, keyboard) => {
     const loader = await ctx.reply("🔄 Обновление данных...")
 
-    const EUBuy = await getPrice.eurBuy("EU")
+    const EURBuy = await getPrice.eurBuy("EU")
 
-    const USABuy = await getPrice.buy("USA")
+    const USABuy = await getPrice.investingBuy("USA")
 
     const UAE = await getPrice.divide("UAE")
 
@@ -13,7 +13,7 @@ export const sendAdminCountries = async (ctx, keyboard) => {
 
     await ctx.reply(
         `🇪🇺 <b>Страны «EC»</b>\n` +
-        ` <b>└</b> 1 € = <code>${EUBuy}</code> ₽ \n` +
+        ` <b>└</b> 1 € = <code>${EURBuy}</code> ₽ \n` +
         ` \n` +
         `🇺🇸 <b>США</b>\n` +
         ` <b>└</b> 1 $ = <code>${USABuy}</code> ₽ \n` +

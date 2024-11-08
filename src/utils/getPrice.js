@@ -62,6 +62,13 @@ export class GetPrice {
         return roundNumber(price * (1 + (perc / 100)))
     }
 
+    async investingBuy(name) {
+        const perc = Number((await Direction.findOne({name})).marginPercentBuy)
+        const price = Number(this.usdRubInvesting)
+
+        return roundNumber(price * (1 + (perc / 100)))
+    }
+
     async secondBuy(name) {
         const perc = Number((await Direction.findOne({name})).marginSecondPercentBuy)
         const price = Number(this.usdtToRub)
@@ -72,7 +79,7 @@ export class GetPrice {
 
     async eurBuy(name) {
         const perc = Number((await Direction.findOne({name})).marginPercentBuy)
-        const price = Number(this.eurToRub)
+        const price = Number(this.eurRubInvesting)
 
         return roundNumber(price * (1 + (perc / 100)))
     }

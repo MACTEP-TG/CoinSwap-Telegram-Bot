@@ -14,10 +14,10 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
     const regionsBuy = await getPrice.buy("Regions")
     const regionsSecondBuy = await getPrice.secondBuy("Regions")
 
-    const EUBuy = await getPrice.eurBuy("EU")
+    const EURBuy = await getPrice.eurBuy("EU")
     const EUPerc = (await Direction.findOne({name: "EU"})).marginPercentBuy
 
-    const USABuy = await getPrice.buy("USA")
+    const USABuy = await getPrice.investingBuy("USA")
     const USAPerc = (await Direction.findOne({name: "USA"})).marginPercentBuy
 
     const UAE = await getPrice.divide("UAE")
@@ -36,7 +36,8 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
     const garantexSell = await getPrice.buyNoRound("Garantex")
     const garantextSecondSell = await getPrice.sellWithFee("Garantex", 0.05)
 
-    const CB = Number(getPrice.usdToRubCB).toFixed(2)
+    const usdCB = Number(getPrice.usdToRubCB).toFixed(2)
+    const eurCB = Number(getPrice.eurToRubCB).toFixed(2)
     const usdForex = Number(getPrice.usdToRub).toFixed(2)
     const eurForex = Number(getPrice.eurToRub).toFixed(2)
     const usdInvesting = Number(getPrice.usdRubInvesting).toFixed(2)
@@ -69,7 +70,7 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
         `<b>Выдача валюты в других странах:</b>\n` +
         ` \n` +
         `🇪🇺 <b>Страны «EC»</b>\n` +
-        ` <b>└</b> 1 € = <code>${EUBuy}</code> ₽ \n` +
+        ` <b>└</b> 1 € = <code>${EURBuy}</code> ₽ \n` +
         ` \n` +
         `🇺🇸 <b>США</b>\n` +
         ` <b>└</b> 1 $ = <code>${USABuy}</code> ₽ \n` +
@@ -81,15 +82,16 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
         ` <b>└</b> 1 ¥ = <code>${china}</code> ₽ \n` +
         `-----------------------------------\n` +
         `📈 <a href="https://www.profinance.ru/charts/usdrub/lc47">ProFinance</a>\n` +
-        ` └ <b>$</b> - <code>${usdForex}</code> ₽\n` +
-        ` └ <b>€</b> - <code>${eurForex}</code> ₽\n` +
+        ` <b>└</b> $ - <code>${usdForex}</code> ₽\n` +
+        ` <b>└</b> € - <code>${eurForex}</code> ₽\n` +
         ` \n` +
         `📊 <a href="https://www.investing.com/currencies/usd-rub">Investing</a> \n` +
-        ` └ <b>$</b> - <code>${usdInvesting}</code> ₽\n` +
-        ` └ <b>€</b> - <code>${eurInvesting}</code> ₽\n` +
+        ` <b>└</b> $ - <code>${usdInvesting}</code> ₽\n` +
+        ` <b>└</b> € - <code>${eurInvesting}</code> ₽\n` +
         ` \n` +
         `🏦 <a href="https://www.cbr.ru/">ЦБ РФ</a>\n` +
-        ` └ <code>${CB}</code> ₽\n` +
+        ` <b>└</b> $ - <code>${usdCB}</code> ₽\n` +
+        ` <b>└</b> € - <code>${eurCB}</code> ₽\n` +
         `-----------------------------------\n` +
         `🟠 <b><a href="https://ru.tradingview.com/symbols/BTCUSD/">BTC</a></b>\n` +
         ` <b>└</b> $${bitcoinUsdt} ⇋ <code>${bitcoinRub}</code> ₽\n` +
