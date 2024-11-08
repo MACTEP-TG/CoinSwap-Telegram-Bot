@@ -57,7 +57,7 @@ export const sendExchangeRateAdmin = async (ctx, keyboard) => {
         ` <b>├</b> Купить - <code>${makhachkalaBuy}</code> ₽\n` +
         ` <b>└</b> Продать - <code>${makhachkalaSell}</code> ₽\n` +
         ` \n` +
-        `🇷🇺 <b>Рег-ны РФ:</b>\n` +
+        `🇷🇺 <b>Рег-ны РФ</b>\n` +
         ` <b>└</b> <code>${regionsBuy}</code> ₽  /  <code>${regionsSecondBuy}</code> ₽\n` +
         `-----------------------------------\n` +
         `🟢 <a href="https://garantex.org/trading/usdtrub">Garantex</a> - <code>${garantex}</code> ₽ (на 100к$)\n` +

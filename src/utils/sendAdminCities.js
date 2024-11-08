@@ -1,5 +1,4 @@
 import {getPrice} from "../bot.js";
-import {Direction} from "../models/direction.js";
 
 export const sendAdminCities = async (ctx, keyboard) => {
     const loader = await ctx.reply("🔄 Обновление данных...")
@@ -22,7 +21,7 @@ export const sendAdminCities = async (ctx, keyboard) => {
         ` <b>├</b> Купить - <code>${makhachkalaBuy}</code> ₽\n` +
         ` <b>└</b> Продать - <code>${makhachkalaSell}</code> ₽\n` +
         ` \n` +
-        `🇷🇺 <b>Рег-ны РФ:</b>\n` +
+        `🇷🇺 <b>Рег-ны РФ</b>\n` +
         ` <b>└</b> <code>${regionsBuy}</code> ₽  /  <code>${regionsSecondBuy}</code> ₽\n`
         ,
         {
