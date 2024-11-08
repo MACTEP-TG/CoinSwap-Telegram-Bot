@@ -10,6 +10,7 @@ import {roundTo500} from "./round500.js";
 import {formatBigNumber} from "./formatBigNumber.js";
 import {getUsdtUsdFactor} from "./getUsdtUsdFactor.js";
 import {getUsdRubInvesting} from "./getUsdRubInvesting.js";
+import {getEurRubInvesting} from "./getEurRubInvesting.js";
 
 export class GetPrice {
 
@@ -38,8 +39,8 @@ export class GetPrice {
         this.ethUsdt = await getUsdtPriceBinance("ETH")
         this.usdToRubCB = await getUsdToRubCB()
         this.usdUsdtFactor = (Number(await getUsdtUsdFactor()) * 100).toFixed(1)
-        this.investing = await getUsdRubInvesting()
-
+        this.usdRubInvesting = await getUsdRubInvesting()
+        this.eurRubInvesting = await getEurRubInvesting()
     }
 
     async usdUsdtFactorBuy() {
@@ -85,7 +86,7 @@ export class GetPrice {
     async divide(name) {
         const divisor = Number((await Direction.findOne({name})).divisor)
 
-        return roundNumber(this.usdtToRub / divisor)
+        return roundNumber(await this.buyNoRound("Garantex") / divisor)
     }
 
     async multiply(name) {

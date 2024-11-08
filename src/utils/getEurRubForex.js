@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 
-const getFourSymbolsAfterUsdRub = (data) => {
+const getFourSymbolsAfterEurRub = (data) => {
     const preprocessedData = data.replace(/[\u2028\u2029\n\t]/g, '').trim()
     const str = preprocessedData.replace(/\s/g, '').slice(Math.floor(preprocessedData.length / 2))
 
@@ -19,5 +19,5 @@ export const getEurRubForex = async () => {
 
     const data = $(`body`)
 
-    return getFourSymbolsAfterUsdRub(data.text())
+    return getFourSymbolsAfterEurRub(data.text())
 }

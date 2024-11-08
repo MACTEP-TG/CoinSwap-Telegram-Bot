@@ -106,7 +106,7 @@ bot.catch((err) => {
     }
 })
 
-cron.schedule('*/1 * * * *', async () => {
+cron.schedule('*/10 * * * *', async () => {
     console.log("channel rate update")
     const [rateMessage, rateMessageOptions] = await getExchangeRate()
     const message = await bot.api.sendMessage(TG_CHANNEL_ID, rateMessage, rateMessageOptions)

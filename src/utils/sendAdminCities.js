@@ -1,8 +1,7 @@
-import {updateKeyboard} from "../keyboards/updateKeyboard.js";
 import {getPrice} from "../bot.js";
-import {Link} from "../models/link.js";
+import {Direction} from "../models/direction.js";
 
-export const sendExchangeRate = async (ctx) => {
+export const sendAdminCities = async (ctx, keyboard) => {
     const loader = await ctx.reply("🔄 Обновление данных...")
 
     const moscowBuy = await getPrice.buy("Moscow");
@@ -14,12 +13,6 @@ export const sendExchangeRate = async (ctx) => {
     const regionsBuy = await getPrice.buy("Regions")
     const regionsSecondBuy = await getPrice.secondBuy("Regions")
 
-    const usdUsdtPercBuy = (await getPrice.usdUsdtFactorBuy()).toFixed(1)
-    const usdUsdtPercSell = (await getPrice.usdUsdtFactorSell()).toFixed(1)
-
-    const link = await Link.findOne({name: "main"})
-
-
     await ctx.reply(
         `🏙️ <b>Москва</b> - CoinSwap\n` +
         ` <b>├</b> Купить - <code>${moscowBuy}</code> ₽\n` +
@@ -29,16 +22,10 @@ export const sendExchangeRate = async (ctx) => {
         ` <b>├</b> Купить - <code>${makhachkalaBuy}</code> ₽\n` +
         ` <b>└</b> Продать - <code>${makhachkalaSell}</code> ₽\n` +
         ` \n` +
-        `💵 <b>USD$ / USD₮</b>\n` +
-        ` <b>├</b> Купить - <code>${usdUsdtPercBuy}</code> %\n` +
-        ` <b>└</b> Продать - <code>${usdUsdtPercSell}</code> %\n` +
-        ` \n` +
-        `🇷🇺 <b>Рег-ны РФ:</b> <code>${regionsBuy}</code> ₽  <b>/</b>  <code>${regionsSecondBuy}</code> ₽\n` +
-        `\n` +
-        `По вопросам: 👉 <a href="${link.link}">НАЖМИ</a>`
-    ,
+        `🇷🇺 <b>Рег-ны РФ:</b> <code>${regionsBuy}</code> ₽  /  <code>${regionsSecondBuy}</code> ₽\n`
+        ,
         {
-            reply_markup: updateKeyboard,
+            reply_markup: keyboard,
             parse_mode: "HTML",
             link_preview_options: {
                 is_disabled: true

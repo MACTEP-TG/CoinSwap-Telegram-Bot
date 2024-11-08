@@ -1,19 +1,16 @@
 import {getPrice} from "../bot.js";
-
+import {Link} from "../models/link.js";
 export const getExchangeRate = async () => {
     const moscowBuy = await getPrice.buy("Moscow");
-    const moscowSecondBuy = await getPrice.secondBuy("Moscow")
     const moscowSell = await getPrice.sell("Moscow")
 
     const makhachkalaBuy = await getPrice.buy("Makhachkala")
-    const makhachkalaSecondBuy = await getPrice.secondBuy("Makhachkala")
     const makhachkalaSell = await getPrice.sell("Makhachkala")
 
     const regionsBuy = await getPrice.buy("Regions")
     const regionsSecondBuy = await getPrice.secondBuy("Regions")
 
     const CISBuy = await getPrice.buy("CIS")
-    const CISSecondBuy = await getPrice.secondBuy("CIS")
 
     const EUBuy = await getPrice.eurBuy("EU")
 
@@ -34,50 +31,24 @@ export const getExchangeRate = async () => {
     const usdUsdtPercBuy = (await getPrice.usdUsdtFactorBuy()).toFixed(1)
     const usdUsdtPercSell = (await getPrice.usdUsdtFactorSell()).toFixed(1)
 
+    const link = await Link.findOne({name: "main"})
+
     return ([
         `🏙️ <b>Москва</b> - CoinSwap\n` +
-        ` <b>├</b> Купить - <code>${moscowBuy}</code> ₽  <b>❘</b>  <code>${moscowSecondBuy}</code> ₽\n` +
+        ` <b>├</b> Купить - <code>${moscowBuy}</code> ₽\n` +
         ` <b>└</b> Продать - <code>${moscowSell}</code> ₽\n` +
         `\n` +
         `🌄 <b>Махачкала</b> - CoinSwap\n` +
-        ` <b>├</b> Купить - <code>${makhachkalaBuy}</code> ₽  <b>❘</b>  <code>${makhachkalaSecondBuy}</code> ₽\n` +
+        ` <b>├</b> Купить - <code>${makhachkalaBuy}</code> ₽\n` +
         ` <b>└</b> Продать - <code>${makhachkalaSell}</code> ₽\n` +
         ` \n` +
         `💵 <b>USD$ / USD₮</b>\n` +
         ` <b>├</b> Купить - <code>${usdUsdtPercBuy}</code> %\n` +
         ` <b>└</b> Продать - <code>${usdUsdtPercSell}</code> %\n` +
         ` \n` +
-        `🇷🇺 <b>Рег-ны РФ:</b> <code>${regionsBuy}</code> ₽  /  <code>${regionsSecondBuy}</code> ₽\n` +
-        `-----------------------------------\n` +
-        `<b>Выдача валюты в других странах:</b>\n` +
+        `🇷🇺 <b>Рег-ны РФ:</b> <code>${regionsBuy}</code> ₽  <b>/</b> <code>${regionsSecondBuy}</code> ₽\n` +
         ` \n` +
-        `🇺🇳 <b>Страны «СНГ»</b>\n` +
-        ` <b>└</b> 1 $ = <code>${CISBuy}</code> ₽  /  <code>${CISSecondBuy}</code> ₽\n` +
-        ` \n` +
-        `🇪🇺 <b>Страны «EC»</b>\n` +
-        ` <b>└</b> 1 € = <code>${EUBuy}</code> ₽\n` +
-        ` \n` +
-        `🇺🇸 <b>США</b>\n` +
-        ` <b>└</b> 1 $ = <code>${USABuy}</code> ₽\n` +
-        ` \n` +
-        `🇦🇪 <b>ОАЭ «Дубай»</b> \n` +
-        ` <b>└</b> 1 AED = <code>${UAE}</code> ₽\n` +
-        ` \n` +
-        `🇨🇳 <b>Китай</b> \n` +
-        ` <b>└</b> 1 ¥ = <code>${china}</code> ₽\n` +
-        ` \n` +
-        `🇰🇷 <b>Юж. Корея</b> \n` +
-        ` <b>└</b> 1 ₽ = <code>${korea}</code> ₩\n` +
-        ` \n` +
-        `<b>Другие страны по запросу...</b>\n` +
-        `-----------------------------------\n` +
-        `<b>🟠 BTC</b> \n` +
-        ` <b>└</b> $${bitcoinUsdt} ⇋ <code>${bitcoinRub}</code> ₽\n` +
-        ` \n` +
-        `🔵 <b>ETH</b> \n` +
-        ` <b>└</b> $${ethereumUsdt} ⇋ <code>${ethereumRub}</code> ₽\n` +
-        ` \n` +
-        `По вопросам: 👉 <a href="https://t.me/m/AZhPjo7mYTdi">НАЖМИ</a>`
+        `По вопросам: 👉 <a href="${link.link}">НАЖМИ</a>`
         ,
         {
             parse_mode: "HTML",
