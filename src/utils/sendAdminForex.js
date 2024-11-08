@@ -1,14 +1,14 @@
 import {getPrice} from "../bot.js";
-import {Direction} from "../models/direction.js";
 
 export const sendAdminForex = async (ctx, keyboard) => {
     const loader = await ctx.reply("🔄 Обновление данных...")
 
-    const CB = Number(getPrice.usdToRubCB).toFixed(2)
+    const usdCB = Number(getPrice.usdToRubCB).toFixed(2)
     const usdForex = Number(getPrice.usdToRub).toFixed(2)
     const eurForex = Number(getPrice.eurToRub).toFixed(2)
     const usdInvesting = Number(getPrice.usdRubInvesting).toFixed(2)
     const eurInvesting = Number(getPrice.eurRubInvesting).toFixed(2)
+    const eurCB = Number(getPrice.eurToRubCB).toFixed(2)
 
     await ctx.reply(
         `📈 <a href="https://www.profinance.ru/charts/usdrub/lc47">ProFinance</a>\n` +
@@ -20,7 +20,8 @@ export const sendAdminForex = async (ctx, keyboard) => {
         ` └ <b>€</b> - <code>${eurInvesting}</code> ₽\n` +
         ` \n` +
         `🏦 <a href="https://www.cbr.ru/">ЦБ РФ</a>\n` +
-        ` └ <code>${CB}</code> ₽\n`
+        ` └ <b>$</b> - <code>${usdCB}</code> ₽\n` +
+        ` └ <b>€</b> - <code>${eurCB}</code> ₽\n`
         ,
         {
             reply_markup: keyboard,

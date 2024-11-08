@@ -11,6 +11,7 @@ import {formatBigNumber} from "./formatBigNumber.js";
 import {getUsdtUsdFactor} from "./getUsdtUsdFactor.js";
 import {getUsdRubInvesting} from "./getUsdRubInvesting.js";
 import {getEurRubInvesting} from "./getEurRubInvesting.js";
+import {getEurToRubCB} from "./getUsdToRubCB.js";
 
 export class GetPrice {
 
@@ -38,6 +39,7 @@ export class GetPrice {
         this.btcUsdt = await getUsdtPriceBinance("BTC")
         this.ethUsdt = await getUsdtPriceBinance("ETH")
         this.usdToRubCB = await getUsdToRubCB()
+        this.eurToRubCB = await getEurToRubCB()
         this.usdUsdtFactor = (Number(await getUsdtUsdFactor()) * 100).toFixed(1)
         this.usdRubInvesting = await getUsdRubInvesting()
         this.eurRubInvesting = await getEurRubInvesting()
