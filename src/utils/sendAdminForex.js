@@ -12,15 +12,15 @@ export const sendAdminForex = async (ctx, keyboard) => {
 
     await ctx.reply(
         `📈 <a href="https://www.profinance.ru/charts/usdrub/lc47">ProFinance</a>\n` +
-        ` <b>└</b> $ - <code>${usdForex}</code> ₽\n` +
+        ` <b>├</b> $ - <code>${usdForex}</code> ₽\n` +
         ` <b>└</b> € - <code>${eurForex}</code> ₽\n` +
         ` \n` +
         `📊 <a href="https://www.investing.com/currencies/usd-rub">Investing</a> \n` +
-        ` <b>└</b> $ - <code>${usdInvesting}</code> ₽\n` +
+        ` <b>├</b> $ - <code>${usdInvesting}</code> ₽\n` +
         ` <b>└</b> € - <code>${eurInvesting}</code> ₽\n` +
         ` \n` +
         `🏦 <a href="https://www.cbr.ru/">ЦБ РФ</a>\n` +
-        ` <b>└</b> $ - <code>${usdCB}</code> ₽\n` +
+        ` <b>├</b> $ - <code>${usdCB}</code> ₽\n` +
         ` <b>└</b> € - <code>${eurCB}</code> ₽\n`
         ,
         {
